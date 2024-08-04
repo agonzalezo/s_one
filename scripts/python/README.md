@@ -8,8 +8,9 @@ To see full NASA API documentation refer to [NASA](https://api.nasa.gov/#browseA
 
 ## Pre-Requisites
 - Python => 3.10
+- Python Venv Module, you can install it using `sudo apt install python3.12-venv -y`
 - API NASA API KEY is easy to get one just need your email. [Generate API KEY](https://api.nasa.gov/#signUp)
-   - Set the the ***API_KEY*** environment variable with the value using **EXPORT**/**SET** or create **.env** file and put the variable on it. 
+   - Using **EXPORT** or **SET** define the the variable ***API_KEY*** as environment variable with the API-KEY value or create **.env** file and put the variable on it. 
 
 ## Installation
 1. Clone this repository (or just [download it](https://github.com/agonzalezo/s_one/archive/refs/heads/main.zip)):
@@ -19,7 +20,7 @@ To see full NASA API documentation refer to [NASA](https://api.nasa.gov/#browseA
    ```
 1. Create a virtual environment.  
    ```bash
-    python -m venv venv
+    python3 -m venv venv
    ```
 1. Activate the virtual environment.  
    ```bash
@@ -27,16 +28,16 @@ To see full NASA API documentation refer to [NASA](https://api.nasa.gov/#browseA
     .\venv\Scripts\Activate.ps1
 
     ## On Linux
-    source .\venv\Scripts\activate
+    source ./venv/bin/activate
     ```
 1. Install dependences
     ```bash
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 ## Usage
 - To generate the **.html** file
     ```bash
     ## Basically execute api_nasa.py
-    python api_nasa.py
+    python4 api_nasa.py
     ```
 

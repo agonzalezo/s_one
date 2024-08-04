@@ -1,6 +1,6 @@
 import pathlib
 
-## Define html html_template and name.
+## Define file name.
 _file_name=f"{pathlib.Path(__file__).parent.resolve()}/result.html"
 
 ## Function to convert JSON data in a html format.
@@ -40,7 +40,7 @@ def write_html(json_data):
         </thead>
         <tbody>
 """
-
+    ## Bucle to iterate JSON data and put a row in html_template for each picture.
     for picture in json_data:
         if picture.get("media_type") == 'image':
             html_template += f"""
@@ -57,6 +57,7 @@ def write_html(json_data):
 </html>
     """
 
+    ## Finally Write the html in a file.
     with open(_file_name, 'w', encoding= 'utf-8') as file:
         file.write(html_template)
 
