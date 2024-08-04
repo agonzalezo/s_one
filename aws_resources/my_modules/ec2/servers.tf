@@ -27,7 +27,7 @@ resource "aws_instance" "web_server" {
   #User data is limited to 16 KB
   user_data = <<-EOF
                 #!/bin/bash
-                # ---> Updating, upgrating and installing the base
+                # ---> Updating, upgrading and installing the base
                 sudo apt update && apt upgrade -y
                 sudo apt install python3-pip apt-transport-https ca-certificates curl software-properties-common zip unzip -y
                 sudo su - root -c 'mkdir -p /opt/software_one && chown ubuntu:ubuntu /opt/software_one'
@@ -57,8 +57,8 @@ resource "aws_instance" "database_server" {
 
                 # Create a new directory and download the repo.
                 New-Item -Path "C:\\software_one" -ItemType Directory
-                Invoke-WebRequest https://github.com/agonzalezo/s_one/archive/refs/heads/main.zip -OutFile "C:\\software_one/repo.zip"
-                if (cd "C:\\software_one") { Expand-Archive .\repo.zip repo }
+                Invoke-WebRequest https://github.com/agonzalezo/s_one/archive/refs/heads/main.zip -OutFile "C:\\software_one/main.zip"
+                cd "C:\\software_one"; Expand-Archive .\main.zip main
 
                 # Habilitar WinRM
                 winrm quickconfig -quiet
