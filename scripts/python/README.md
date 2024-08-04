@@ -38,6 +38,6 @@ To see full NASA API documentation refer to [NASA](https://api.nasa.gov/#browseA
 - To generate the **.html** file
     ```bash
     ## Basically execute api_nasa.py
-    python4 api_nasa.py
+    python3 api_nasa.py
     ```
 
