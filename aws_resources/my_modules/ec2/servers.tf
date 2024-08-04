@@ -61,11 +61,15 @@ resource "aws_instance" "database_server" {
                 cd "C:\\software_one"; Expand-Archive .\main.zip main
 
                 # Habilitar WinRM
+                New-NetFirewallRule -DisplayName "Allow WinRM HTTP" -Direction Inbound -LocalPort 5985 -Protocol TCP -Action Allow
+                New-NetFirewallRule -DisplayName "Allow WinRM HTTPS" -Direction Inbound -LocalPort 5986 -Protocol TCP -Action Allow
                 winrm quickconfig -quiet
                 winrm set winrm/config/service/auth @{Basic="true"}
                 winrm set winrm/config/service @{AllowUnencrypted="true"}
                 winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"}
                 winrm set winrm/config @{MaxTimeoutms="1800000"}
+                Set-ExecutionPolicy Unrestricted -Force
+                Restart-Service WinRM
                 </powershell>
                 EOF
 }

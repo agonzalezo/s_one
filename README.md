@@ -11,12 +11,8 @@ Basic projects focused on devops skills.
         - [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html#getting-started-quickstart-new-command)
         - [environment variables](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html)
 
-## Usage
-- To Deploy the resources go to [aws_resources](./aws_resources/) folder and follow the readme instructions.
-
 ## Installation
 - git clone https://github.com/agonzalezo/s_one.git
-- Default env vars,
-    ```bash
-    NODE_ENV='production'
-    ```
+
+## Usage
+- To Deploy the resources go to [aws_resources](./aws_resources/) folder and follow the readme instructions.
