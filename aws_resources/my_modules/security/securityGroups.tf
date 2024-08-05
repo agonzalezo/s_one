@@ -15,8 +15,16 @@ resource "aws_security_group" "common_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["179.13.74.242/32"]
+    cidr_blocks = ["${data.http.my_ip.response_body}/32"]
     description = "Allow SSH just from me."
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.my_vpc_cidr]
+    description = "Allow SSH inside the VPC."
   }
 
   ingress {
@@ -41,6 +49,14 @@ resource "aws_security_group" "common_sg" {
     protocol    = "tcp"
     cidr_blocks = ["${data.http.my_ip.response_body}/32"]
     description = "Allow rdp just from me."
+  }
+
+  ingress {
+    from_port   = 5985
+    to_port     = 5986
+    protocol    = "tcp"
+    cidr_blocks = [var.my_vpc_cidr]
+    description = "Allow winrm inside the vpc."
   }
 
   ingress {

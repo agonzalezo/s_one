@@ -1,0 +1,20 @@
+- name: Install HTTPD (apache server)
+  hosts: linux
+  tasks:
+   - name: Ping my hosts
+     ping:
+   - name: Update apt package cache
+     apt:
+      update_cache: yes
+   - name: Install Apache
+     apt:
+      name: apache2
+      state: present
+   - name: Start Apache service
+     service:
+      name: apache2
+      state: started
+   - name: Copy index page
+     template:
+      src: "index.html"
+      dest: "/var/www/html/index.html"

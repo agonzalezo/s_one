@@ -40,6 +40,7 @@ module "dev_security" {
   source = "./my_modules/security"
   environment = var.environment
   my_vpc_id = module.dev_infrastructure.vpc_id
+  my_vpc_cidr = var.vpc_cidr
   ssh_pub_path = var.ssh_public_key_path
 }
 

@@ -15,8 +15,9 @@ Basic projects focused on devops skills.
 - git clone https://github.com/agonzalezo/s_one.git
 
 ## Usage
-- To Deploy the resources using terraform go to [aws_resources](./aws_resources/) folder and follow the readme instructions.
+- To Deploy the resources using terraform go to [aws_resources/](./aws_resources/) folder and follow the readme instructions.
 - Scripts
     - Go to [scripts/python](./scripts/python/) folder and follow the readme instructions.
     - Go to [scripts/bash](./scripts/bash/) folder and follow the readme instructions.
     - Go to [scripts/powershell](./scripts/powershell/) folder and follow the readme instructions.
+- To manage the ansible PlayBooks please Go to [ansible/](./ansible/) folder and follow the readme instructions.

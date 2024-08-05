@@ -30,9 +30,14 @@ resource "aws_instance" "web_server" {
                 # ---> Updating, upgrading and installing the base
                 sudo apt update && apt upgrade -y
                 sudo apt install python3-pip apt-transport-https ca-certificates curl software-properties-common zip unzip -y
-                sudo su - root -c 'mkdir -p /opt/software_one && chown ubuntu:ubuntu /opt/software_one'
+                sudo add-apt-repository --yes --update ppa:ansible/ansible
+                sudo apt update
+                sudo apt install ansible -y
+                ansible --version
+                sudo su - root -c 'mkdir -p /opt/software_one'
                 cd /opt/software_one && wget https://github.com/agonzalezo/s_one/archive/refs/heads/main.zip
                 cd /opt/software_one && unzip main.zip
+                chown -R ubuntu:ubuntu /opt/software_one
                 EOF
 }
 

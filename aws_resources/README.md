@@ -47,5 +47,5 @@ We just need the IP Address and the private key location.
 - Get the IP, execute `terraform output dev_ec2` and copy **Linux_ip** value.
 - Connect to the server using OpenSSH client, Run below command replacing **$LINUX_IP with the IP Address obtained in the previous step.**: 
     ```bash
-    ssh -i s-one_key ubuntu@$LINUX_IP
+    ssh -i s-one_key.pem ubuntu@$LINUX_IP
     ```
