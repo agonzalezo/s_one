@@ -15,9 +15,14 @@ This bash script execute some commands to obtain basically info then format they
    ```
 
 ## Usage
-- To generate the report **.html** file
+1. Give execution permission to the script.
     ```bash
-    ## Basically execute monitor.sh
+    chmod +x monitor.sh
+    ```
+1. To generate the report **.html** file basically execute monitor.sh
+    ```bash
+    ./monitor.sh
+    ## or
     bash monitor.sh
     ```
 
