@@ -40,7 +40,7 @@
 
     - name: Create a Database
       win_shell: |
-        Invoke-Sqlcmd -Query "CREATE DATABASE S_ONE" -ServerInstance "localhost"
+        Invoke-Sqlcmd -Query "CREATE DATABASE S_ONE" -ServerInstance "localhost" -TrustServerCertificate
       args:
         executable: powershell.exe
       when: installation is changed
