@@ -1,0 +1,47 @@
+- name: Install SQL Server on Windows Server
+  hosts: windows
+  tasks:
+    - name: Ping my hosts
+      win_ping:
+      register: ping
+
+    - name: Info
+      debug:
+        msg: "Host: {{ ansible_hostname }} OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Download the installer
+      win_get_url:
+        url: https://download.microsoft.com/download/5/1/4/5145fe04-4d30-4b85-b0d1-39533663a2f1/SQL2022-SSEI-Expr.exe
+        dest: C:\software_one\SQL2022-SSEI-Expr.exe
+      register: download
+      when: download is changed
+
+    - name: Install Powershell Module SqlServer
+      win_psmodule:
+        name: SqlServer
+        state: present
+        accept_license: true
+        force: true
+        skip_publisher_check: yes
+
+    - name: Execute the installer
+      win_shell: |
+        C:\software_one\SQL2022-SSEI-Expr.exe /Action=Install /QS /IACCEPTSQLSERVERLICENSETERMS /INDICATEPROGRESS=True /LANGUAGE=es-ES /MediaType=Expr /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /SECURITYMODE=SQL /InstallPath="c:\Program Files\Microsoft SQL Server" /SAPWD="adminadmin" /SQLSYSADMINACCOUNTS="BUILTIN\Administrators"
+      args:
+        executable: powershell.exe
+      when: download is changed
+      register: installation
+
+    - name: Ensure SQL Server is running
+      win_service:
+        name: MSSQL$SQLEXPRESS
+        start_mode: auto
+        state: started
+
+    - name: Create a Database
+      win_shell: |
+        Invoke-Sqlcmd -Query "CREATE DATABASE S_ONE" -ServerInstance "localhost"
+      args:
+        executable: powershell.exe
+      when: installation is changed
+

@@ -68,6 +68,7 @@ resource "aws_instance" "database_server" {
                 # Habilitar WinRM
                 New-NetFirewallRule -DisplayName "Allow WinRM HTTP" -Direction Inbound -LocalPort 5985 -Protocol TCP -Action Allow
                 New-NetFirewallRule -DisplayName "Allow WinRM HTTPS" -Direction Inbound -LocalPort 5986 -Protocol TCP -Action Allow
+                New-NetFirewallRule -DisplayName "Allow mssql" -Direction Inbound -LocalPort 14433 -Protocol TCP -Action Allow
                 winrm quickconfig -quiet
                 winrm set winrm/config/service/auth @{Basic="true"}
                 winrm set winrm/config/service @{AllowUnencrypted="true"}
