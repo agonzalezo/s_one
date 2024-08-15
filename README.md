@@ -1,5 +1,6 @@
 # s_one Devops Skills
 Basic projects focused on devops skills.
+archivo editado.
 
 ## Pre-Requisites
 - A PEM-RSA SSH KeyPair, you can create it using `ssh-keygen -t rsa -b 2048 -m PEM -f s-one_key.pem`
